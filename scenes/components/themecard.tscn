@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bi6tfn3k747fc"]
+
+[ext_resource type="Script" uid="uid://dnuiil0q7jt46" path="res://scenes/components/themecard.gd" id="1_wejvh"]
+[ext_resource type="Texture2D" uid="uid://m5uehj6qsj1m" path="res://assets/haven/placeholder.png" id="2_v0si4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wejvh"]
+font_size = 25
+
+[node name="ThemeCard" type="PanelContainer" unique_id=734455083]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -55.0
+offset_right = 77.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wejvh")
+label_settings = null
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1220527395]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=880727697]
+custom_minimum_size = Vector2(288, 288)
+custom_maximum_size = Vector2(288, 162)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel" unique_id=413563327]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("2_v0si4")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=392604999]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Theme Name"
+label_settings = SubResource("LabelSettings_wejvh")

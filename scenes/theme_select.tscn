@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b6c6sp4qadewg"]
+
+[ext_resource type="FontVariation" uid="uid://gdnii84tdy48" path="res://assets/font/Darumadrop_One/variations/main.tres" id="1_2r4r0"]
+[ext_resource type="PackedScene" uid="uid://bi6tfn3k747fc" path="res://scenes/components/themecard.tscn" id="2_2r4r0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mjfn4"]
+font = ExtResource("1_2r4r0")
+font_size = 53
+
+[node name="ThemeSelect" type="Control" unique_id=418997923]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1310456127]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -188.5
+offset_right = 188.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 23
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1453573354]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Select a Theme !"
+label_settings = SubResource("LabelSettings_mjfn4")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1362058195]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 18
+columns = 4
+
+[node name="ThemeCard" parent="VBoxContainer/GridContainer" unique_id=734455083 instance=ExtResource("2_2r4r0")]
+layout_mode = 2

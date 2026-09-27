@@ -31,9 +31,17 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.47058824, 0.23921569, 0.16862746, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_potab"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.9882353, 0.5254902, 0.08627451, 1)
+
 [resource]
 Button/font_sizes/font_size = 44
 Button/styles/focus = SubResource("StyleBoxFlat_xj4hd")
 Button/styles/hover = SubResource("StyleBoxFlat_xj4hd")
 Button/styles/normal = SubResource("StyleBoxFlat_6xf7n")
 Button/styles/pressed = SubResource("StyleBoxFlat_l7ie4")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_potab")
