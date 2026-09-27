@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" format=3 uid="uid://dhxik88v7vasf"]
+
+[ext_resource type="FontFile" uid="uid://dq11plalhyieq" path="res://assets/font/Jua/Jua-Regular.ttf" id="1_vscgd"]
+
+[resource]
+base_font = ExtResource("1_vscgd")

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://7dcdd6jctmji"]
+
+[ext_resource type="Texture2D" uid="uid://cc1pdafh2gsia" path="res://assets/haven/logo/watercolor.png" id="1_natt5"]
+[ext_resource type="FontVariation" uid="uid://gdnii84tdy48" path="res://assets/font/Darumadrop_One/variations/main.tres" id="2_r3g3c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrupr"]
+font = ExtResource("2_r3g3c")
+font_size = 47
+
+[node name="Mainmenu" type="Control" unique_id=1331016749]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1089099739]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.5
+offset_top = -166.0
+offset_right = 356.5
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 23
+
+[node name="Title" type="VBoxContainer" parent="Layout" unique_id=373986226]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Layout/Title" unique_id=723335650]
+custom_maximum_size = Vector2(400, 258.696)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_natt5")
+
+[node name="Label" type="Label" parent="Layout/Title" unique_id=1782978784]
+layout_mode = 2
+text = "Welcome to the Haven Photoboot !"
+label_settings = SubResource("LabelSettings_qrupr")
+horizontal_alignment = 1
+
+[node name="Take a Picture !" type="Button" parent="Layout" unique_id=1905631430]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Take a Picture !"
