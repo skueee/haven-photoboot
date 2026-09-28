@@ -1,0 +1,5 @@
+- Add base of the app
+- Add dynamic/animated themes
+- Add WSL support and guide
+  - https://stackoverflow.com/questions/64202644/how-should-i-open-remote-camera-in-windows-10-from-wsl2
+- Add VM guide
