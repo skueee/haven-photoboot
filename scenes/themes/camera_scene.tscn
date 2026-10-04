@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bt73yf24mmmls"]
+
+[ext_resource type="Script" uid="uid://b334e1fh4g7do" path="res://scripts/webcam_feed.gd" id="1_6nj58"]
+[ext_resource type="Shader" uid="uid://b3yksg277ppeo" path="res://scenes/themes/camera.gdshader" id="1_eqmaf"]
+[ext_resource type="Texture2D" uid="uid://cikgshiwes6af" path="res://icon.svg" id="2_8vfel"]
+
+[sub_resource type="CameraTexture" id="CameraTexture_8vfel"]
+which_feed = 1
+
+[sub_resource type="CameraTexture" id="CameraTexture_eqmaf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_potab"]
+shader = ExtResource("1_eqmaf")
+shader_parameter/camera_y = SubResource("CameraTexture_eqmaf")
+shader_parameter/camera_CbCr = SubResource("CameraTexture_8vfel")
+
+[node name="CameraScene" type="Node2D" unique_id=1739317302]
+
+[node name="WebcamFeed" type="Sprite2D" parent="." unique_id=419929556]
+material = SubResource("ShaderMaterial_potab")
+position = Vector2(956, 541)
+scale = Vector2(14.984375, 8.4375)
+texture = ExtResource("2_8vfel")
+script = ExtResource("1_6nj58")
+camera_id = 1
+
+[node name="InitDelay" type="Timer" parent="." unique_id=890836916]
+unique_name_in_owner = true
+autostart = true
+
+[connection signal="timeout" from="InitDelay" to="WebcamFeed" method="_on_init_delay_timeout"]
