@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cikgshiwes6af" path="res://icon.svg" id="2_8vfel"]
 
 [sub_resource type="CameraTexture" id="CameraTexture_8vfel"]
-which_feed = 1
 
 [sub_resource type="CameraTexture" id="CameraTexture_eqmaf"]
 
@@ -13,13 +12,14 @@ which_feed = 1
 shader = ExtResource("1_eqmaf")
 shader_parameter/camera_y = SubResource("CameraTexture_eqmaf")
 shader_parameter/camera_CbCr = SubResource("CameraTexture_8vfel")
+shader_parameter/saturation = 1.0000000475
 
 [node name="CameraScene" type="Node2D" unique_id=1739317302]
 
 [node name="WebcamFeed" type="Sprite2D" parent="." unique_id=419929556]
 material = SubResource("ShaderMaterial_potab")
 position = Vector2(956, 541)
-scale = Vector2(14.984375, 8.4375)
+scale = Vector2(10, 7.545)
 texture = ExtResource("2_8vfel")
 script = ExtResource("1_6nj58")
 camera_id = 1

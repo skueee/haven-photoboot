@@ -1,42 +1,3 @@
-#extends Sprite2D
-#
-#var camera_id_list: Array = []
-#var active = false
-#var camera: CameraFeed
-#
-#func _ready():
-#	CameraServer.camera_feed_added.connect(_on_feed_created)
-#	CameraServer.monitoring_feeds = true
-#	
-#func _on_feed_created(id):
-#	camera_id_list.append(id)
-#	print(id)
-#	print("Heyyy")
-#
-#func _on_init_delay_timeout() -> void:
-#	print(camera_id_list)
-#	for feed in CameraServer.feeds():
-#		if not feed.get_id() in camera_id_list:
-#			camera_id_list.append(feed.get_id())
-#	if len(camera_id_list) >= 1:
-#		%InitDelay.stop()
-#		camera = CameraServer.get_feed(camera_id_list[0])
-#		
-#		var formats = camera.get_formats()
-#		if formats.size() > 0:
-#			camera.set_format(0, {})
-#		camera.feed_is_active = true
-#		
-#		var cam_tex_y = material.get_shader_parameter("camera_y")
-#		var cam_tex_CbCr = material.get_shader_parameter("camera_CbCr")
-#
-#		cam_tex_y.camera_feed_id = camera_id_list[0]
-#		cam_tex_CbCr.camera_feed_id = camera_id_list[0]
-#	
-#		material.set_shader_parameter("camera_y", cam_tex_y)
-#		material.set_shader_parameter("camera_CbCr", cam_tex_CbCr)
-#
-
 extends Sprite2D
 
 @export var camera_name: String = ""
@@ -44,12 +5,17 @@ extends Sprite2D
 var camera: CameraFeed
 
 func get_format(formats: Array) -> Dictionary:
-	var yuyv_formats = formats.filter(func(f): return f.get("format") == "YUYV 4:2:2")
-	if yuyv_formats.is_empty():
+	var filtered_formats = formats.filter(func(f):
+		var is_yuyv = f.get("format") == "YUYV 4:2:2"
+		var is_4_3 = f.get("width") * 3 == f.get("height") * 4
+		return is_yuyv and is_4_3
+	)
+	
+	if filtered_formats.is_empty():
 		return {}
 
 	# Sort by area (width * height), then by frame rate (frame_denominator / frame_numerator)
-	yuyv_formats.sort_custom(func(a, b):
+	filtered_formats.sort_custom(func(a, b):
 		var area_a = a["width"] * a["height"]
 		var area_b = b["width"] * b["height"]
 		if area_a != area_b:
@@ -60,7 +26,7 @@ func get_format(formats: Array) -> Dictionary:
 		return fps_a > fps_b
 	)
 
-	return yuyv_formats[0]
+	return filtered_formats[0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -85,7 +51,7 @@ func _ready():
 	print(formats)
 	print("SELECTED :" + str(format))
 	
-	camera.set_format(formats.find(format), {"output": "separate"})
+	camera.set_format(formats.find(format), {})
 	camera.feed_is_active = true
 	
 	var cam_tex_y = material.get_shader_parameter("camera_y")
